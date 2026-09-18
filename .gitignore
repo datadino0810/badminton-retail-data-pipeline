@@ -1,0 +1,28 @@
+# Generated project outputs
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+dist/
+
+# Generated databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Java
+*.class
+*.jar
+target/
+
+# macOS
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
