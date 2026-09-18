@@ -1,0 +1,11 @@
+.DS_Store
+.idea/
+.vscode/
+.venv/
+__pycache__/
+*.egg-info/
+*.pyc
+build/
+java_client/target/
+*.db
+*.jar

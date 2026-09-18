@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="nonNegativeMoney">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="positiveQuantity">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="badminton_retail_data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="categories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="category" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="category_id" type="xs:string"/>
+                    <xs:element name="category_name" type="xs:string"/>
+                    <xs:element name="category_description" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="brands">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="brand" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="brand_id" type="xs:string"/>
+                    <xs:element name="brand_name" type="xs:string"/>
+                    <xs:element name="country" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="suppliers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="supplier" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="supplier_id" type="xs:string"/>
+                    <xs:element name="supplier_name" type="xs:string"/>
+                    <xs:element name="phone" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="store_locations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="store_location" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="location_id" type="xs:string"/>
+                    <xs:element name="address" type="xs:string"/>
+                    <xs:element name="city" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="staff_members">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="staff" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="staff_id" type="xs:string"/>
+                    <xs:element name="staff_name" type="xs:string"/>
+                    <xs:element name="role" type="xs:string"/>
+                    <xs:element name="location_id" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="customers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="customer" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="customer_id" type="xs:string"/>
+                    <xs:element name="customer_name" type="xs:string"/>
+                    <xs:element name="email" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="products">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="product" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="product_code" type="xs:string"/>
+                    <xs:element name="product_name" type="xs:string"/>
+                    <xs:element name="product_type" type="xs:string"/>
+                    <xs:element name="cost_price_cents" type="nonNegativeMoney"/>
+                    <xs:element name="retail_price_cents" type="nonNegativeMoney"/>
+                    <xs:element name="category_id" type="xs:string"/>
+                    <xs:element name="brand_id" type="xs:string"/>
+                    <xs:element name="supplier_id" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="inventory_records">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="inventory" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="inventory_id" type="xs:string"/>
+                    <xs:element name="product_code" type="xs:string"/>
+                    <xs:element name="location_id" type="xs:string"/>
+                    <xs:element name="quantity_on_hand" type="xs:nonNegativeInteger"/>
+                    <xs:element name="reorder_level" type="xs:nonNegativeInteger"/>
+                    <xs:element name="last_restock_date" type="xs:date"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="sales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sale" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="sale_id" type="xs:string"/>
+                    <xs:element name="sale_date" type="xs:date"/>
+                    <xs:element name="payment_method" type="xs:string"/>
+                    <xs:element name="staff_id" type="xs:string"/>
+                    <xs:element name="customer_id" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="sale_items">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sale_item" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="sale_item_id" type="xs:string"/>
+                    <xs:element name="sale_id" type="xs:string"/>
+                    <xs:element name="product_code" type="xs:string"/>
+                    <xs:element name="quantity_sold" type="positiveQuantity"/>
+                    <xs:element name="unit_price_cents" type="nonNegativeMoney"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:key name="category_key"><xs:selector xpath="categories/category"/><xs:field xpath="category_id"/></xs:key>
+    <xs:key name="brand_key"><xs:selector xpath="brands/brand"/><xs:field xpath="brand_id"/></xs:key>
+    <xs:key name="supplier_key"><xs:selector xpath="suppliers/supplier"/><xs:field xpath="supplier_id"/></xs:key>
+    <xs:key name="location_key"><xs:selector xpath="store_locations/store_location"/><xs:field xpath="location_id"/></xs:key>
+    <xs:key name="staff_key"><xs:selector xpath="staff_members/staff"/><xs:field xpath="staff_id"/></xs:key>
+    <xs:key name="customer_key"><xs:selector xpath="customers/customer"/><xs:field xpath="customer_id"/></xs:key>
+    <xs:key name="product_key"><xs:selector xpath="products/product"/><xs:field xpath="product_code"/></xs:key>
+    <xs:key name="sale_key"><xs:selector xpath="sales/sale"/><xs:field xpath="sale_id"/></xs:key>
+
+    <xs:keyref name="staff_location_ref" refer="location_key"><xs:selector xpath="staff_members/staff"/><xs:field xpath="location_id"/></xs:keyref>
+    <xs:keyref name="product_category_ref" refer="category_key"><xs:selector xpath="products/product"/><xs:field xpath="category_id"/></xs:keyref>
+    <xs:keyref name="product_brand_ref" refer="brand_key"><xs:selector xpath="products/product"/><xs:field xpath="brand_id"/></xs:keyref>
+    <xs:keyref name="product_supplier_ref" refer="supplier_key"><xs:selector xpath="products/product"/><xs:field xpath="supplier_id"/></xs:keyref>
+    <xs:keyref name="inventory_product_ref" refer="product_key"><xs:selector xpath="inventory_records/inventory"/><xs:field xpath="product_code"/></xs:keyref>
+    <xs:keyref name="inventory_location_ref" refer="location_key"><xs:selector xpath="inventory_records/inventory"/><xs:field xpath="location_id"/></xs:keyref>
+    <xs:keyref name="sale_staff_ref" refer="staff_key"><xs:selector xpath="sales/sale"/><xs:field xpath="staff_id"/></xs:keyref>
+    <xs:keyref name="sale_customer_ref" refer="customer_key"><xs:selector xpath="sales/sale"/><xs:field xpath="customer_id"/></xs:keyref>
+    <xs:keyref name="sale_item_sale_ref" refer="sale_key"><xs:selector xpath="sale_items/sale_item"/><xs:field xpath="sale_id"/></xs:keyref>
+    <xs:keyref name="sale_item_product_ref" refer="product_key"><xs:selector xpath="sale_items/sale_item"/><xs:field xpath="product_code"/></xs:keyref>
+  </xs:element>
+</xs:schema>

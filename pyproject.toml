@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "badminton-retail-pipeline"
+version = "1.0.0"
+description = "A reproducible SQLite and XML pipeline for badminton retail data"
+requires-python = ">=3.10"
+dependencies = ["lxml>=5,<7"]
+
+[project.scripts]
+retail-pipeline = "retail_pipeline.run:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
